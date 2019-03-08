@@ -4,10 +4,11 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ListFragment.OnRecipeSelectedInterface {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +21,10 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragtrans = fragman.beginTransaction();
         fragtrans.add(R.id.placeholder, listFragment);
         fragtrans.commit();
+    }
+
+    @Override
+    public void onListRecipeSelected(int index) {
+        Toast.makeText(MainActivity.this, Recipes.names[index], Toast.LENGTH_SHORT).show();
     }
 }

@@ -19,10 +19,10 @@ public class ListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         OnRecipeSelectedInterface listener = (OnRecipeSelectedInterface)getActivity();
-
-
         View view = inflater.inflate(R.layout.fragment_list, container, false);
+
         RecyclerView recyclerView = view.findViewById(R.id.listRecyclerView);
         ListAdapter listAdapter = new ListAdapter(listener);
         recyclerView.setAdapter(listAdapter);

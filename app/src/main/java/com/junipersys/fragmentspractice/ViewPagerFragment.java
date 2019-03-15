@@ -10,7 +10,6 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 public class ViewPagerFragment extends Fragment {
     public static final String KEY_RECIPE_INDEX = "recipe_index";
@@ -19,16 +18,22 @@ public class ViewPagerFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         int index = getArguments().getInt(KEY_RECIPE_INDEX); //getting bundle arguments
+
+        //setting the action bar title
+        getActivity().setTitle(Recipes.names[index]);
+
         View view = inflater.inflate(R.layout.fragment_viewpager, container, false);
 
         final IngredientsFragment ingredientsFragment = new IngredientsFragment();
         Bundle bundle = new Bundle();
         bundle.putInt(KEY_RECIPE_INDEX, index);
         ingredientsFragment.setArguments(bundle);
-        final DirectionsFragment directionsFragment = new DirectionsFragment();
 
-        //setting the action bar title
-        getActivity().setTitle(Recipes.names[index]);
+        final DirectionsFragment directionsFragment = new DirectionsFragment();
+        bundle = new Bundle();
+        bundle.putInt(KEY_RECIPE_INDEX, index);
+        directionsFragment.setArguments(bundle);
+
 
         ViewPager viewPager = view.findViewById(R.id.viewpager);
         viewPager.setAdapter(new FragmentPagerAdapter(getChildFragmentManager()) {

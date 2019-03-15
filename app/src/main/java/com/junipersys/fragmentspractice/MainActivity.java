@@ -29,8 +29,6 @@ public class MainActivity extends AppCompatActivity implements ListFragment.OnRe
 
     @Override
     public void onListRecipeSelected(int index) {
-
-
         ViewPagerFragment viewPagerFragment = new ViewPagerFragment();
 
         Bundle bundle = new Bundle();
